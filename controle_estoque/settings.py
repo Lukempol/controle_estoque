@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_bz^m&+gjqpas++i(3by*apee-q28h114fd8g$6^(6x%_ls2j3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lukempol.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'lukempol.pythonanywhere.com']
 
 
 # Application definition
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'controle_estoque.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
