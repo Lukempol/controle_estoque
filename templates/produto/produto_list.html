@@ -1,17 +1,30 @@
 {% extends 'produto/base.html' %}
 
 {% block content %}
-    <h1>Lista de Produtos</h1>
-        <ul>
+    
+    <div class="titulo">
+      <h1>Lista de Produtos</h1>
+    </div>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Quantidade</th>
+            </tr>    
+          </thead>  
+          <tbody>
             {% for object in object_list %}
+            <tr>
             
-            <li>{{ object.name}}</li>
-            <li>{{ object.quantidade }}</li>
-
-            <hr />
+                <td>{{ object.name}}</td>
+                <td>{{ object.quantidade }}</td>
+                <td>{{ object.descricao }}</td>
+            </tr>
 
             {% empty %}
-            <li>A lista está vazia</li>
+            <p>A lista está vazia</p>
             {% endfor %}
-        </ul>
+          </tbody>  
+        </table>
 {% endblock %}

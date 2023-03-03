@@ -1,0 +1,29 @@
+.content {
+    position: absolute;
+    left: 15%;
+    width: 70%;
+    height: 100%;
+    background-color: #B2DBBF; 
+    /*display: flex;
+    justify-content: center; */
+}
+
+body {
+    background-color: #376D6B;
+}
+
+tr {
+    background-color: #ECFEE8;
+}
+
+tr:hover {
+    background-color: #65AFFF;
+}
+
+.titulo {
+    background-attachment: #1B2845;
+}
+
+thead {
+    background-color: #5e4b56;
+}
