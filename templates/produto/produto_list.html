@@ -1,6 +1,14 @@
 {% extends 'produto/base.html' %}
 
 {% block content %}
+
+<script>
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});
+</script>
     
     <div class="titulo">
       <h1>Lista de Produtos</h1>
@@ -15,15 +23,18 @@
           </thead>  
           <tbody>
             {% for object in object_list %}
-            <tr>
+          
+              {% url 'produto_detail' object.quantidade as url %}
+              <tr class='clickable-row' data-href={{url}}>
+                  <td>{{ object.name}}</td>
+                  <td>{{ object.quantidade }}</td>
+                  <td>{{ object.descricao }}</td>
+                
+              </tr>
             
-                <td>{{ object.name}}</td>
-                <td>{{ object.quantidade }}</td>
-                <td>{{ object.descricao }}</td>
-            </tr>
 
-            {% empty %}
-            <p>A lista está vazia</p>
+              {% empty %}
+              <p>A lista está vazia</p>
             {% endfor %}
           </tbody>  
         </table>
