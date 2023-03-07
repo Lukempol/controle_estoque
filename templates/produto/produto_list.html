@@ -13,6 +13,7 @@
     <div class="titulo">
       <h1 class="text-center">Lista de Produtos</h1>
     </div>
+      <div class="table-responsive">
         <table class="table">
           <thead class="thead-dark">
             <tr>
@@ -22,7 +23,7 @@
                 <th scope="col">Descrição</th>
             </tr>    
           </thead>  
-          <tbody class= "table-list">
+          <tbody class= "table table-list">
             {% for object in object_list %}
           
               {% url 'produto_detail' object.cod as url %}
@@ -31,14 +32,11 @@
                   <td>{{ object.name }}</td>
                   <td>{{ object.quantidade }}</td>
                   <td>{{ object.descricao }}</td>
-                  
-                
               </tr>
-            
-
               {% empty %}
               <p class="alert alert-warning">A lista está vazia</p>
             {% endfor %}
           </tbody>  
         </table>
+      </div>
 {% endblock %}
