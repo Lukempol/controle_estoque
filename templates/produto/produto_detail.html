@@ -1,7 +1,42 @@
 {% extends 'produto/base.html' %}
 
 {% block content %}
+    <div class="detail-content">
+    <a href={% url 'produto_list' %}>
+        <button  type="button" class="btn btn-primary btn-large btn-voltar"><i class="fa fa-chevron-circle-left"></i> Voltar</button>
+    </a>
+    <h1 class="text-center"> {{object.name}} </h1>
 
-    <h1> Detalhe do Produto </h1>
+    <table class="table">
+        <tbody>
+          <!--<tr>
+            <th class="text-right">Importado</th>
+            <td>
+              {% if object.importado %}
+                <i class="fa fa-check-circle ok"></i>
+              {% else %}
+                <i class="fa fa-minus-circle no"></i>
+              {% endif %}
+            </td>
+          </tr>-->
+          <tr>
+            <th class="text-right">Código:</th>
+            <td c>{{ object.cod }}</td>
+          </tr>
+          <tr>
+            <th class="text-right">Estoque:</th>
+            <td>{{ object.quantidade }}</td>
+          </tr>
+          <tr>
+            <th class="text-right">Estoque mínimo:</th>
+            <td>{{ object.minimo }}</td>
+          </tr>
+          <tr>
+            <th class="text-right">Descrição:</th>
+            <td>{{ object.descricao }}</td>
+          </tr>
+        </tbody>
+      </table>
 
+    </div>  
 {% endblock %}

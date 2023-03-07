@@ -12,18 +12,32 @@ body {
     background-color: #376D6B;
 }
 
-tr {
+.table-list > tr {
     background-color: #ECFEE8;
 }
 
-tr:hover {
+.table-list > tr:hover {
     background-color: #65AFFF;
 }
 
 .titulo {
-    background-attachment: #1B2845;
+    /*background-attachment: #1B2845;
+    text-align: center;*/
+
 }
 
 thead {
     background-color: #5e4b56;
+}
+
+.detail-content {
+    background-color: #ECFEE8;
+}
+
+.detail-content > h1 {
+    font-size: 48px;
+}
+
+.btn-voltar {
+    margin: 10px;
 }

@@ -9,13 +9,21 @@ class ProdutoListView(generic.ListView):
 
 def ProdutoDetail(request, pk):
     template_name = 'produto/produto_detail.html'
-    #obj = Produto.objects.get(pk=pk)
-    context = {'object': pk}
+    obj = Produto.objects.get(pk=pk)
+    context = {'object': obj}
     return render(request, template_name, context)
     
 
-class CreateProduto(generic.edit.CreateView):
+class CreateProduto(generic.CreateView):
     form_class = ProdutoForm
     success_url = '/'
     template_name = 'produto/create_produto.html'
     model = Produto
+
+'''
+class EditProduto(generic.UpdateView):
+    model = Produto
+    template_name = 'produto/create_produto.html'
+    form_class = ProdutoForm
+    success_url = '/produto/'
+'''
