@@ -11,7 +11,12 @@
 </script>
     
     <div class="titulo">
-      <h1 class="text-center">Lista de Produtos</h1>
+      <h1 class="text-left"> Lista de Produtos       
+        <a href={% url 'adicionar' %}>
+        <button  type="button" class="btn btn-primary btn-large btn-voltar  float-right"><i class="fa-sharp fa-solid fa-circle-plus"></i> Adicionar </button>
+        </a>
+      </h1>
+
     </div>
       <div class="table-responsive">
         <table class="table">

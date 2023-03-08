@@ -20,10 +20,14 @@ class CreateProduto(generic.CreateView):
     template_name = 'produto/create_produto.html'
     model = Produto
 
-'''
+
 class EditProduto(generic.UpdateView):
     model = Produto
     template_name = 'produto/create_produto.html'
     form_class = ProdutoForm
     success_url = '/produto/'
-'''
+
+class DeleteProduto(generic.DeleteView):
+    model = Produto
+    #template_name = 'produto/create_produto.html'
+    success_url = '/produto/'

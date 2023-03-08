@@ -38,6 +38,10 @@ thead {
     font-size: 48px;
 }
 
-.btn-voltar {
+.btn {
     margin: 10px;
+}
+
+.content-header {
+    border-color: crimson;
 }
