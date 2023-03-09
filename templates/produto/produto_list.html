@@ -22,10 +22,12 @@
         <table class="table">
           <thead class="thead-dark">
             <tr>
-                <th scope="col">Codigo</th>
+                <th scope="col">Status</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Quantidade</th>
-                <th scope="col">Descrição</th>
+                <th class="text-center" scope="col">Quantidade</th>
+                <th class="text-center" scope="col">Estoque Mínimo</th>
+                <th scope="col">Tipo de Produto</th>
+                <th scope="col">Codigo</th>
             </tr>    
           </thead>  
           <tbody class= "table table-list">
@@ -33,10 +35,20 @@
           
               {% url 'produto_detail' object.cod as url %}
               <tr class='clickable-row' data-href={{url}}>
-                  <td>{{ object.cod}}</td>
+                <td>
+                  {% if object.quantidade > object.minimo %}
+                  <i class="fa-solid fa-circle-check" style="color:green"></i>
+                  {% elif object.quantidade <= object.minimo and object.quantidade > 0 %}
+                  <i class="fa-solid fa-triangle-exclamation" style="color:#FFA500"></i>
+                  {% else %}
+                  <i class="fa-solid fa-circle-minus" style="color:red"></i>
+                  {% endif %}
+                </td>
                   <td>{{ object.name }}</td>
-                  <td>{{ object.quantidade }}</td>
-                  <td>{{ object.descricao }}</td>
+                  <td class="text-center">{{ object.quantidade }}</td>
+                  <td class="text-center">{{ object.minimo }}</td>
+                  <td> {{ object.get_tipo_display }} </td>
+                  <td>{{ object.cod}}</td>
               </tr>
               {% empty %}
               <p class="alert alert-warning">A lista está vazia</p>
