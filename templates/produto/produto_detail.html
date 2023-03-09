@@ -19,7 +19,19 @@
   <button  type="button" class="btn btn-success btn-large float-right"><i class="fa-regular fa-pen-to-square"></i> Editar </button>
 </a>
     </div>
-    <h1 class="text-center"> {{object.name}} </h1>
+    
+    <h1 class="text-center"> 
+      
+      {% if object.quantidade > object.minimo %}
+      <i class="fa-solid fa-circle-check" style="color:green"></i>
+      {% elif object.quantidade <= object.minimo and object.quantidade > 0 %}
+      <i class="fa-solid fa-triangle-exclamation" style="color:#FFA500"></i>
+      {% else %}
+      <i class="fa-solid fa-circle-minus" style="color:red"></i>
+      {% endif %}
+      
+      {{object.name}}
+    </h1>
 
     <table class="table">
         <tbody>
@@ -35,7 +47,19 @@
           </tr>-->
           <tr>
             <th class="text-right">Código:</th>
-            <td c>{{ object.cod }}</td>
+            <td>{{ object.cod }}</td>
+          </tr>
+          <tr>
+            <th class="text-right">Status:</th>
+            <td>
+              {% if object.quantidade > object.minimo %}
+               Estoque Ok
+              {% elif object.quantidade <= object.minimo and object.quantidade > 0 %}
+               Estoque Baixo
+              {% else %}
+               Em Falta
+              {% endif %}
+            </td>
           </tr>
           <tr>
             <th class="text-right">Estoque:</th>
