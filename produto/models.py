@@ -6,7 +6,7 @@ class Produto(models.Model):
     tipos_produto =[
         (1, 'Padaria'),
         (2, 'Açougue'),
-        (3, 'Grãos e cereais'),
+        (3, 'Mercearia'),
         (4, 'Congelados e frios'),
         (5, 'Hortifruti'),
         (6, 'Produtos de Limpeza'),
