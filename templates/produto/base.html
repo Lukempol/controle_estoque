@@ -36,15 +36,15 @@
             </li>
             {% url 'produto_list' as url %}
             <li class="nav-item {% if request.path ==  url %}active{% endif %}">
-              <a class="nav-link" href="{{ url }}">Estoque</a>
+              <a class="nav-link" href={{ url }}> Estoque</a>
             </li>
-            
-            <li class="nav-item ">
-              <a class="nav-link" href="#">Chamado</a>
+            {% url 'chamado' as url %}
+            <li class="nav-item {% if request.path ==  url %}active{% endif %}">
+              <a class="nav-link" href={{ url }}> Chamado</a>
             </li>
             {% url 'relatorio' as url %}
             <li class="nav-item {% if request.path ==  url %}active{% endif %}">
-              <a class="nav-link " href="{{ url }}">  {# tabindex="-1" aria-disabled="true" #} Relatório </a>
+              <a class="nav-link" href={{ url }}> Relatório</a>
             </li>
 
           </ul>

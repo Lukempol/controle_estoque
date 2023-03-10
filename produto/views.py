@@ -10,7 +10,7 @@ def some_view(request):
     # Cria o objeto HttpResponse com o cabeçalho CSV apropriado.
     response = HttpResponse(
         content_type='text/csv',
-        headers={'Content-Disposition': 'attachment; filename=somefilename.csv'},)
+        headers={'Content-Disposition': 'attachment; filename=relatorio.csv'},)
 
     writer = csv.writer(response)
     writer.writerow(['Código', 'Nome', 'Status', 'Estoque', 'Estoque Mínimo', 'Descrição'])
