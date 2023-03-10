@@ -29,20 +29,24 @@
 
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+
+            {% url 'home' as url %}
+            <li class="nav-item {% if request.path ==  url %}active{% endif %}">
+              <a class="nav-link" href={{ url }}> Home <!--<span class="sr-only">(current)</span>--></a>
             </li>
             {% url 'produto_list' as url %}
             <li class="nav-item {% if request.path ==  url %}active{% endif %}">
               <a class="nav-link" href="{{ url }}">Estoque</a>
             </li>
-            <li class="nav-item">
+            
+            <li class="nav-item ">
               <a class="nav-link" href="#">Chamado</a>
             </li>
-            {% url 'adicionar' as url %}
+            {% url 'relatorio' as url %}
             <li class="nav-item {% if request.path ==  url %}active{% endif %}">
               <a class="nav-link " href="{{ url }}">  {# tabindex="-1" aria-disabled="true" #} Relatório </a>
             </li>
+
           </ul>
         </div>
     </nav> 

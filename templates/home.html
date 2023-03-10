@@ -1,0 +1,20 @@
+{% extends 'produto/base.html' %}
+
+{% block content %}
+<h1>
+    Bem vindo ao sistema de controle de estoque
+    <a href={% url 'adicionar' %}>
+        <button  type="button" class="btn btn-primary btn-large btn-voltar  float-right"><i class="fa-regular fa-user"></i> Login </button>
+        </a>
+</h1>
+
+
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+
+{% endblock %}

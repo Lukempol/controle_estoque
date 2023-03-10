@@ -1,0 +1,19 @@
+{% extends 'produto/base.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header text-center"><h2><b>Login</b></h2></div>
+        <div class="card-body text-center">
+            <form class="form" role="form" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
