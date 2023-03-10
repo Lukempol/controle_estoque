@@ -4,9 +4,13 @@
        
 <form method="post">{% csrf_token %}
     
-    <p>Tem certeza que deseja deletar o produto "{{ object.name }}"?</p>
-       
-    <input type="submit" value="Deletar">
+    <h1>
+        Tem certeza que deseja deletar o produto "{{ object.name }}"?
+        <input type="submit" value="Deletar" class="btn btn-danger btn-large float-right">
+        <a href={% url 'produto_detail' object.cod %}>
+            <button  type="button" class="btn btn-success btn-large float-right"> Voltar </button>
+          </a>
+    </h1>
 
 </form>
 

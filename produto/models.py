@@ -16,7 +16,7 @@ class Produto(models.Model):
     ]
     cod = models.IntegerField(editable=False, primary_key=True)
     name = models.CharField(max_length=50)
-    descricao = models.TextField(blank=True)
+    descricao = models.CharField(max_length=250, blank=True)
     quantidade = models.IntegerField(default=0)
     minimo = models.PositiveIntegerField()
     tipo = models.IntegerField(choices=tipos_produto, default=2)

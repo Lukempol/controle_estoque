@@ -2,12 +2,18 @@
 
 {% block content %}
 
-<form method="post" action="">
+<a href={% url 'produto_list' %}>
+    <button  type="button" class="btn btn-primary btn-large btn-voltar  text-left"><i class="fa-regular fa-circle-left"></i> Voltar </button>
+</a>
+
+<form method="post" action="" class="text-center">
+    <div class="form-group">
     {% csrf_token %}
     {{ form.errors}}
     {{ form.as_p }}
     <input class="btn btn-primary" type="submit" value="Salvar">
     <!--button type="button" class="btn btn-primary">Primary</button> -->
+    </div>
 </form>
 
 {% endblock %}
