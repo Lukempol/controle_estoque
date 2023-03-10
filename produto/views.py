@@ -6,7 +6,7 @@ from .forms import ProdutoForm
 import csv
 from django.http import HttpResponse
 
-def some_view(request):
+def relatorio(request):
     # Cria o objeto HttpResponse com o cabeçalho CSV apropriado.
     response = HttpResponse(
         content_type='text/csv',
