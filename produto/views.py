@@ -29,7 +29,7 @@ def relatorio(request):
 
 class ProdutoListView(generic.ListView):
     model = Produto
-    queryset = Produto.objects.all()
+    queryset = Produto.objects.all().order_by('name')
 
 def ProdutoDetail(request, pk):
     template_name = 'produto/produto_detail.html'

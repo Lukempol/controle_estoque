@@ -22,6 +22,7 @@ class Produto(models.Model):
     tipo = models.IntegerField(choices=tipos_produto, default=2)
 
     def save(self, *args, **kwargs):
+        self.name = self.name.capitalize()
         if self.cod:
             super().save(*args, **kwargs)
         else:
