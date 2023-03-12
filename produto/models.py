@@ -20,7 +20,7 @@ class Produto(models.Model):
     simple_name = models.CharField(max_length=50, editable=False, default='')
     descricao = models.CharField(max_length=250, blank=True)
     quantidade = models.IntegerField(default=0)
-    minimo = models.PositiveIntegerField()
+    minimo = models.PositiveIntegerField(default=0)
     tipo = models.IntegerField(choices=tipos_produto, default=2)
 
     def save(self, *args, **kwargs):

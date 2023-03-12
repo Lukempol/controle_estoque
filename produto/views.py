@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 from django.views import generic
 from produto.models import Produto
@@ -33,7 +34,10 @@ class ProdutoListView(generic.ListView):
 
 def ProdutoDetail(request, pk):
     template_name = 'produto/produto_detail.html'
-    obj = Produto.objects.get(pk=pk)
+    try:
+        obj = Produto.objects.get(pk=pk)
+    except:
+        raise Http404
     context = {'object': obj}
     return render(request, template_name, context)
     
