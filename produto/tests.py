@@ -13,8 +13,12 @@ class ProdutoTestCase(TestCase):
         self.assertEqual(obj.simple_name, "agua")
     
     def test_cod_gerado_automaticamente(self):
-        obj = Produto.objects.filter(name="Xadrez").first()
-        assert obj is not None
+        obj1 = Produto.objects.filter(name="Xadrez").first()
+        obj2 = Produto.objects.filter(name="Xadrez").first()
+        obj3 = Produto.objects.filter(name="Xadrez").first()
+        assert obj1 is not None
+        assert obj2 is not None
+        assert obj3 is not None
     
     def test_cod_4_digitos_gerado_automatico(self):
         obj = Produto.objects.filter(name="Água").first()
