@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.utils import IntegrityError
 from random import randint
+import unicodedata
 
 class Produto(models.Model):
     tipos_produto =[
@@ -16,6 +17,7 @@ class Produto(models.Model):
     ]
     cod = models.IntegerField(editable=False, primary_key=True)
     name = models.CharField(max_length=50)
+    simple_name = models.CharField(max_length=50, editable=False, default='')
     descricao = models.CharField(max_length=250, blank=True)
     quantidade = models.IntegerField(default=0)
     minimo = models.PositiveIntegerField()
@@ -23,6 +25,7 @@ class Produto(models.Model):
 
     def save(self, *args, **kwargs):
         self.name = self.name.capitalize()
+        self.simple_name = unicodedata.normalize("NFD", self.name).encode("ascii", "ignore").decode("utf8").casefold()
         if self.cod:
             super().save(*args, **kwargs)
         else:
