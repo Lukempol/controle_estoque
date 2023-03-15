@@ -112,6 +112,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+SECURE_SSL_REDIRECT = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -131,4 +132,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = "/" 
+LOGOUT_REDIRECT_URL = "/"
