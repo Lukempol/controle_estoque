@@ -34,7 +34,7 @@ class ProdutoListView(generic.ListView):
     queryset = Produto.objects.all().order_by('simple_name')
 
     def get_queryset(self): 
-        search = self.request.GET.get('search')
+        search = self.request.GET.get('search') 
         
         if search:
             search = unicodedata.normalize("NFD", str(search)).encode("ascii", "ignore").decode("utf8").casefold()
