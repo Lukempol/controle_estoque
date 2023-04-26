@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_bz^m&+gjqpas++i(3by*apee-q28h114fd8g$6^(6x%_ls2j3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['127.0.0.1', 'lukempol.pythonanywhere.com']
 
@@ -112,7 +112,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
