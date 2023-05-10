@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import formset_factory
 from produto.models import Produto
 
 def get_produtos():
@@ -11,3 +12,5 @@ class ProdutoForm(forms.Form):
 
 class ProdutoForm(forms.Form):
     produtos = forms.ChoiceField(choices=get_produtos)
+
+ProdutoFormSet = formset_factory(ProdutoForm, extra=1)
