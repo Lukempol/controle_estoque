@@ -2,6 +2,10 @@
 
 {% block content %}
 
-<h1> Esta funcionalidade não está disponível, pois está em contrução </h1>
+    {% for obj in mongo %}
+
+    <h1> {{obj.nome}}   {{obj.qtd}}  </h1>
+
+    {% endfor %}
 
 {% endblock %}
