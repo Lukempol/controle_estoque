@@ -3,36 +3,52 @@
 
 <form id="form-container" method = "POST">
     {% csrf_token %}
-    {{ formset.management_form }}
-    {% for form in formset %}
-    <div class="product-form">
-    {{ form.as_p }}
-    </div>
-    {% endfor %}
-    <button id="add-form" type="submit">Adicionar Produto</button> 
+    <div class="tipo_form">{{ tipo.as_p }}</div>
+    
+        {{ formset.management_form }}
+        {% for form in formset %}
+        <div class="product-form">
+        {{ form.as_p }}
+        </div>
+        {% endfor %}
+    
+    <button id="add-form" type="button">Adicionar Produto</button> 
+    <button id="remove-form" type="button">Remover Produto</button> 
     <button type="submit">Salvar</button>
 </form>
 
 <script>
-    let birdForm = document.querySelectorAll(".product-form")
+    let productForm = document.querySelectorAll(".product-form")
     let container = document.querySelector("#form-container")
     let addButton = document.querySelector("#add-form")
+    let removeButton = document.querySelector("#remove-form")
     let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
 
-    let formNum = birdForm.length-1
     addButton.addEventListener('click', addForm)
+    removeButton.addEventListener('click', removeForm)
 
     function addForm(e){
         e.preventDefault()
 
-        let newForm = birdForm[0].cloneNode(true)
+        let newForm = productForm[0].cloneNode(true)
         let formRegex = RegExp(`form-(\\d){1}-`,'g')
 
-        formNum++
-        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${document.querySelectorAll(".product-form").length}-`)
         container.insertBefore(newForm, addButton)
         
-        totalForms.setAttribute('value', `${formNum+1}`)
+        totalForms.setAttribute('value', `${document.querySelectorAll(".product-form").length}`);
+        console.log(totalForms);
+        console.log(document.querySelectorAll(".product-form"));
+        
+    }
+
+    function removeForm(e){
+        e.preventDefault()
+    
+        container.removeChild(container.lastElementChild.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling);
+        totalForms.setAttribute('value', `${document.querySelectorAll(".product-form").length}`);
+        console.log(totalForms);
+        console.log(document.querySelectorAll(".product-form"));
     }
 </script>
 
