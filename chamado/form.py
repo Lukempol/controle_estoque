@@ -9,13 +9,17 @@ def get_produtos():
 
 class TipoForm(forms.Form):
     tipo_chamado = [
-    ( 1 , 'entrada'),
-    ( 0 , 'saída' )
+    ( 1 , 'Entrada de produtos'),
+    ( 0 , 'Saída de produtos' )
     ]
     tipo = forms.ChoiceField(required=True, choices=tipo_chamado)
 
+class TituloForm(forms.Form):
+    titulo = forms.CharField(required=True, max_length=30)
+
+
 class ProdutoForm(forms.Form):
     produtos = forms.ChoiceField(required=True, choices=get_produtos)
-    qtd = forms.IntegerField(required=True)
+    qtd = forms.IntegerField(required=True, widget=forms.TextInput(attrs={"size": "5"}))
 
-ProdutoFormSet = formset_factory(ProdutoForm, extra=1, can_delete=True)
+ProdutoFormSet = formset_factory(ProdutoForm, extra=1)

@@ -11,7 +11,7 @@
 </script>
     
     <div class="titulo">
-      <h1 class="text-left"> Lista de Produtos       
+      <h1 class="text-left"> Lista de Chamados       
         <a href={% url 'abertura' %}>
         <button  type="button" class="btn btn-primary btn-large btn-voltar  float-right"><i class="fa-sharp fa-solid fa-circle-plus"></i> Abrir Chamado </button>
         </a>
@@ -32,12 +32,13 @@
         <table class="table">
           <thead class="thead-dark">
             <tr>
-                <th scope="col">Status</th>
-                <th scope="col">Nome</th>
-                <th class="text-center" scope="col">Quantidade</th>
-                <th class="text-center" scope="col">Estoque Mínimo</th>
-                <th scope="col">Tipo de Produto</th>
-                <th scope="col">Código</th>
+              <th scope="col">Tipo de Chamado</th>
+              <th scope="col">Título</th>
+              <th scope="col">Autor</th>
+              <th class="text-center" scope="col">Data</th>
+              <th scope="col">Código</th>
+
+              
             </tr>    
           </thead>  
           <tbody class= "table table-list">
@@ -45,23 +46,14 @@
           
               {% url 'produto_detail' object.cod as url %}
               <tr class='clickable-row' data-href={{url}}>
-                <td>
-                  {% if object.quantidade > object.minimo %}
-                  <i class="fa-solid fa-circle-check" style="color:green"></i>
-                  {% elif object.quantidade <= object.minimo and object.quantidade > 0 %}
-                  <i class="fa-solid fa-triangle-exclamation" style="color:#FFA500"></i>
-                  {% else %}
-                  <i class="fa-solid fa-circle-minus" style="color:red"></i>
-                  {% endif %}
-                </td>
-                  <td>{{ object.name }}</td>
-                  <td class="text-center">{{ object.quantidade }}</td>
-                  <td class="text-center">{{ object.minimo }}</td>
-                  <td> {{ object.get_tipo_display }} </td>
+                  <td> {{ object.get_tipoChamado_display }} </td>
+                  <td >{{ object.titulo }}</td>
+                  <td class="text-center">{{ object.usuario }}</td>
+                  <td class="text-center">{{ object.data }}</td>
                   <td>{{ object.cod}}</td>
               </tr>
               {% empty %}
-              <p class="alert alert-warning">A lista está vazia</p>
+              <p class="alert alert-warning"> Não existem chamados no momento</p>
             {% endfor %}
           </tbody>  
         </table>

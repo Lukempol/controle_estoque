@@ -4,11 +4,12 @@
 <form id="form-container" method = "POST">
     {% csrf_token %}
     <div class="tipo_form">{{ tipo.as_p }}</div>
+    <div class="titulo_form">{{ titulo.as_p }}</div>
     
         {{ formset.management_form }}
         {% for form in formset %}
         <div class="product-form">
-        {{ form.as_p }}
+        {{ form }}
         </div>
         {% endfor %}
     
