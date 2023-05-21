@@ -44,7 +44,7 @@
           <tbody class= "table table-list">
             {% for object in object_list %}
           
-              {% url 'produto_detail' object.cod as url %}
+              {% url 'chamado_detail' object.cod as url %}
               <tr class='clickable-row' data-href={{url}}>
                   <td> {{ object.get_tipoChamado_display }} </td>
                   <td >{{ object.titulo }}</td>

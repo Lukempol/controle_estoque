@@ -1,8 +1,11 @@
+from bson.objectid import ObjectId
+
+from django.http import Http404
 from django.shortcuts import render, redirect
 from django.views import generic
 
 from chamado.models import Chamado
-from chamado.form import ProdutoFormSet, TipoForm, TituloForm
+from chamado.form import ProdutoFormSet, TipoForm, TituloForm, get_produtos
 
 from chamado.mongoDB import mongo_conect
 
@@ -55,6 +58,31 @@ def abreChamado(request):
         print(obj, '\n', id)
         return redirect("chamado")                  
     return render(request, template_name, context)
+
+
+
+def chamadoDetail(request, pk):
+    template_name = 'chamado/chamado_detail.html'
+    collection = mongo_conect()
+    try:
+        obj = Chamado.objects.get(pk=pk)
+        product_list = collection.find_one({"_id" : ObjectId(pk)})
+        product_list = product_list['lista']
+    except:
+        raise Http404
+    dict_nome = dict(get_produtos())
+    product_name_list = []
+    for item in product_list:
+        cod = int(item['produto'])
+        nome = dict_nome[cod]
+        product_name_list.append({
+            'produto' : nome,
+            'qtd' : item['qtd']
+        })
+
+    context = {'object' : obj, 'product_list' : product_name_list}
+    return render(request, template_name, context)
+
 
 
 '''

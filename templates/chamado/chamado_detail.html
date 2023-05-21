@@ -1,0 +1,35 @@
+{% extends 'produto/base.html' %}
+
+{% block content %}
+<style>
+.btn {
+    margin: 10px;
+}
+</style>
+  <div class="detail-content">
+    <div class="content-header position-relative">
+    <a href={% url 'chamado' %}>
+        <button  type="button" class="btn btn-primary btn-large btn-voltar  text-left"><i class="fa-regular fa-circle-left"></i> Voltar </button>
+    </a>
+  </div>
+
+    
+    <h1 class="text-center"> {{object.get_tipoChamado_display}}</h1>
+    <h2 class="text-center"> Título: {{object.titulo}} </h2>
+    <p class="text-right">Criado por {{object.usuario}} em {{object.data}}</p>
+
+    <table class="table">
+        <tbody>
+        {% for item in product_list %}
+            <tr>
+                {% for key, value in item.items %}
+                <th class="text-right">{{key}}</th>
+                <td>{{value}}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+
+  </div>  
+{% endblock %}
