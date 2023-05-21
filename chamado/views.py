@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.views import generic
 
 from chamado.models import Chamado
-from chamado.form import ProdutoFormSet, TipoForm, TituloForm, get_produtos
+from chamado.form import ProdutoFormSet, TipoForm, TituloForm, dict_nome
 
 from chamado.mongoDB import mongo_conect
 
@@ -70,7 +70,7 @@ def chamadoDetail(request, pk):
         product_list = product_list['lista']
     except:
         raise Http404
-    dict_nome = dict(get_produtos())
+    
     product_name_list = []
     for item in product_list:
         cod = int(item['produto'])

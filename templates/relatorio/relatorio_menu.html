@@ -1,0 +1,19 @@
+{% extends 'produto/base.html' %}
+
+{% block content %}
+
+<h1 class="text-center"> Gerar Relatórios </h1>
+
+    <div class="text-center">
+    <a href={% url 'relatorio_produto' %}>
+    <button  type="button" class="btn btn-primary btn-large float-center"> Estoque </button>
+    </a>
+    </div>
+    
+    <div class="text-center">
+    <a href={% url 'relatorio_chamado' %}>
+    <button  type="button" class="btn btn-primary btn-large float-center"> Chamados </button>
+    </a>
+    </div>
+
+{% endblock %}

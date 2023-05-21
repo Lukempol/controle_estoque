@@ -5,6 +5,7 @@ from produto.models import Produto
 def get_produtos():
     return [(pro.cod, pro.name) for pro in Produto.objects.all()]
 
+dict_nome = dict(get_produtos())
 
 
 class TipoForm(forms.Form):
