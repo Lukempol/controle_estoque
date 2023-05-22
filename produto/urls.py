@@ -8,5 +8,4 @@ urlpatterns = [
     path('adicionar/', login_required(views.CreateProduto.as_view()), name='adicionar'),
     path('editar/<int:pk>/', login_required(views.EditProduto.as_view()), name='editar'),
     path('deletar/<int:pk>/', login_required(views.DeleteProduto.as_view()), name='deletar'),
-    path('relatorio/', login_required(views.relatorio), name='relatorio'),
 ]

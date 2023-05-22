@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from chamado.models import Chamado
 from chamado.mongoDB import mongo_conect
-from chamado.form import dict_nome
+from chamado.form import get_produtos
 from produto.models import Produto
 from bson.objectid import ObjectId
 import csv
@@ -33,7 +33,7 @@ def relatorio_produto(request):
 
 def relatorio_chamado(request):
     collection = mongo_conect()
-    
+    dict_nome = dict(get_produtos())
     # Cria o objeto HttpResponse com o cabeçalho CSV apropriado.
     response = HttpResponse(
         content_type='text/csv',
